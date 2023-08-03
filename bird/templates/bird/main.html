@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+</head>
+<body>
+    <h1 class="center">Главная страница</h1>
+    <div class="options">
+        <a href="{% url 'add_bird' %}" class="option-link">Добавить птицу</a>
+        <a href="{% url 'bird_list' %}" class="option-link">Посмотреть птиц</a>
+    </div>
+</body>
+</html>
+
+<style>
+    .center {
+        text-align: center;
+    }
+    .options {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    .option-link {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 0 10px;
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        border: 2px solid #388E3C;
+        transition: background-color 0.3s;
+    }
+    .option-link:hover {
+        background-color: #45a049;
+    }
+</style>

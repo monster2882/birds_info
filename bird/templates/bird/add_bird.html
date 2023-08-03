@@ -1,0 +1,85 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Добавление птицы</title>
+    </head>
+    <body>
+        <h1>Добавление новой птицы</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="name">Название птицы:</label>
+            <input type="text" id="name" name="name"><br>
+            <label for="color">Цвет перьев:</label>
+            <input type="text" id="color" name="color"><br>
+            <label for="photo">Фотография:</label>
+            <input type="file" id="photo" name="photo"><br>
+            <label for="sightings">Видели птицу?</label>
+            <input type="radio" id="sightings_yes" name="sightings" value="yes">
+            <label for="sightings_yes">Да</label>
+            <input type="radio" id="sightings_no" name="sightings" value="no">
+            <label for="sightings_no">Нет</label><br>
+            <input type="submit" value="Сохранить">
+
+        </form>
+    </body>
+    </html>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin-left: -420px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 550px;
+
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+            margin-left: 0px;
+        }
+        .radio-group {
+            display: flex;
+            align-items: center;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>

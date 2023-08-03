@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация определенной птицы</title>
+</head>
+<body>
+    <h1>{{ bird.name }}</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <td>{{ bird.id }}</td>
+        </tr>
+        <tr>
+            <th>Цвет перьев</th>
+            <td>{{ bird.color }}</td>
+        </tr>
+        <tr>
+            <th>Фотография</th>
+            <td><img src="{{ bird.photo.url }}" alt="{{ bird.name }}" width="300"></td>
+        </tr>
+        <tr>
+            <th>Количество наблюдений</th>
+            <td>{{ bird.sightings }}</td>
+        </tr>
+    </table>
+    <div class="button-container">
+        <button class="increment-button" data-bird-id="{{ bird.id }}">Видел</button>
+    </div>
+    <script>
+    const incrementButton = document.querySelector('.increment-button');
+    incrementButton.addEventListener('click', () => {
+        const birdId = incrementButton.getAttribute('data-bird-id');
+        fetch(`/bird/${birdId}/increment/`)
+            .then(response => response.json())
+            .then(data => {
+                const sightingsElement = document.querySelector('td[data-field="sightings"]');
+                if (sightingsElement) {
+                    sightingsElement.textContent = data.new_sightings;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+    </script>
+
+</body>
+</html>
+
+<style>
+        h1 {
+            font-size: 50px;
+            text-align: center;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 24px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .increment-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 30px 50px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 26px;
+        }
+        .increment-button:hover {
+            background-color: #45a049;
+        }
+    </style>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список птиц</title>
+</head>
+<body>
+    <h1 class='center' id="name">Список птиц</h1>
+    <ul class="center">
+        {% for bird in birds %}
+            <li>
+                <strong>ID:</strong> {{ bird.id }}<br>
+                <strong>Название птицы:</strong> {{ bird.name }}<br>
+                <strong>Цвет перьев:</strong> {{ bird.color }}<br>
+                <strong>Фотография:</strong> <img src="{{ bird.photo.url }}" alt="{{ bird.name }}" width="200"><br>
+                <strong>Количество наблюдений:</strong> {{ bird.sightings }}<br>
+                <div class="view-button">
+                    <a href="{% url 'one_bird' bird.id %}" class="view-link">Посмотреть отдельно</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+<style>
+    #name {
+        font-size: 50px;
+        text-align: center;
+    }
+    ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 5px;
+            text-align: left;
+            background-color: #fff;
+            border: 3px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        li {
+            padding: 10px;
+            border-bottom: 5px solid #ccc;
+        }
+        .view-button {
+        text-align: left;
+        margin-top: 10px;
+    }
+    .view-link {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        border: 2px solid #388E3C;
+        transition: background-color 0.3s;
+    }
+    .view-link:hover {
+        background-color: #45a049;
+    }
+</style>
